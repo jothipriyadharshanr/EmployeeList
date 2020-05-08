@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:layout_margin="7dp"
+    android:background="@color/colorWhite"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="5dp">
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/tools"
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_profile1"
+            app:civ_border_color="#FF000000" />
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/imgProfile"
+            android:ellipsize="end"
+            android:gravity="start|center"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp" />
+
+        <RelativeLayout
+            android:id="@+id/rlId"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/txtName"
+            android:layout_toRightOf="@+id/imgProfile">
+
+            <TextView
+                android:id="@+id/txtIdTit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/id"
+                android:textColor="@color/colorGrey"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtId"
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/txtIdTit"
+                android:ellipsize="end"
+                android:gravity="start|center"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:paddingLeft="5dp"
+                android:text="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtAgeTit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/txtId"
+                android:gravity="start|center"
+                android:maxLength="5"
+                android:maxLines="1"
+                android:text="@string/age"
+                android:textColor="@color/colorGrey"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtAge"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/txtAgeTit"
+                android:gravity="start|center"
+                android:maxLength="3"
+                android:maxLines="1"
+                android:paddingLeft="5dp"
+                android:text="100"
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlSalary"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/rlId"
+            android:layout_toRightOf="@+id/imgProfile">
+
+            <TextView
+                android:id="@+id/txtSalaryTit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/salary"
+                android:textColor="@color/colorGrey"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtSalary"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/txtSalaryTit"
+                android:ellipsize="end"
+                android:gravity="start|center"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:paddingLeft="5dp"
+                android:text="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private RelativeLayout progressBar;
     private TextView txtEmpty;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private boolean isSorted = false;
+    private boolean isDeleted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 syncList.clear();
                 employeeTable.clearTable();
                 adapter.clearItem();
+                isDeleted = true;
             }
         });
         //Sort Database
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 syncList.clear();
                 List<Employee> sortList = employeeTable.sortEmployeeByAge();
                 adapter.addList(sortList);
+                isSorted = true;
             }
         });
         //RecyclerView
@@ -85,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 syncList();
+                isDeleted = false;
             }
         });
         //Check RecyclerView is empty
@@ -119,7 +124,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         txtEmpty.setVisibility(View.GONE);
-        populateList();
+        if(isDeleted){
+            populateList();
+        }
     }
 
     //Swipe left or right to delete item
@@ -148,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             if (Network.isConnected(this)) {
                 progressBar.setVisibility(View.VISIBLE);
+                isDeleted = false;
                 syncList();
             } else {
                 Toast.makeText(MainActivity.this,Constants.ERROR_NETWORK,Toast.LENGTH_SHORT);

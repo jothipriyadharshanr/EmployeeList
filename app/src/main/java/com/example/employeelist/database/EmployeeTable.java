@@ -3,11 +3,13 @@ package com.example.employeelist.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.employeelist.model.Employee;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeTable extends SQLiteOpenHelper {
@@ -71,16 +73,34 @@ public class EmployeeTable extends SQLiteOpenHelper {
         closeDB();
     }
 
-//    public List<Employee> getEmployeeList() {
-//    to be added
-//    }
-//
+    public List<Employee> getEmployeeList() {
+        openDB();
+        List<Employee> list = new ArrayList<>();
+        Cursor cursor = sqLiteDatabase.query(TABLE_NAME, null, null, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Employee employee = new Employee();
+                employee.setId(cursor.getInt(cursor.getColumnIndex(EMP_ID)));
+                employee.setEmployee_name(cursor.getString(cursor.getColumnIndex(EMP_NAME)));
+                employee.setEmployee_age(cursor.getInt(cursor.getColumnIndex(EMP_AGE)));
+                employee.setEmployee_salary(cursor.getLong(cursor.getColumnIndex(EMP_SALARY)));
+                employee.setProfile_image(cursor.getString(cursor.getColumnIndex(EMP_PROFILE)));
+                list.add(employee);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        closeDB();
+        return list;
+    }
+
 //    public List<Employee> sortEmployeeByAge(String age) {
 //    to be added
 //    }
 
-//    public void clearTable() {
-//    to be added
-//    }
+    public void clearTable() {
+        openDB();
+        sqLiteDatabase.delete(TABLE_NAME, null, null);
+        closeDB();
+    }
 }
 

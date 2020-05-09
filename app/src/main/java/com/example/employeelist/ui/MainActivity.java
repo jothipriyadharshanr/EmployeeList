@@ -57,6 +57,16 @@ public class MainActivity extends AppCompatActivity {
                 adapter.clearItem();
             }
         });
+        //Sort Database
+        ImageView imgSort = findViewById(R.id.imgSort);
+        imgSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                syncList.clear();
+                List<Employee> sortList = employeeTable.sortEmployeeByAge();
+                adapter.addList(sortList);
+            }
+        });
         //RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
@@ -88,7 +98,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         populateList();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        txtEmpty.setVisibility(View.GONE);
+        populateList();
     }
 
     /*

@@ -9,6 +9,6 @@
     <string name="please_wait">Please wait...</string>
     <string name="no_data">No data</string>
     <string name="clear">Clear</string>
-    <string name="clear_action">Do you want to clear storage?</string>
+<!-- thought of using it, but not used   <string name="clear_action">Do you want to clear storage?</string>-->
     <string name="title">Employee List</string>
 </resources>

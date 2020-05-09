@@ -37,6 +37,14 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ItemHo
         notifyDataSetChanged();
     }
 
+    public void clearItem() {
+        try {
+            list.clear();
+            notifyDataSetChanged();
+        } catch (Exception e) {
+        }
+    }
+
     @Override
     public EmployeeAdapter.ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_employee, parent, false);

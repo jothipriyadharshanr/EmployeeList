@@ -1,5 +1,6 @@
 package com.example.employeelist.ui;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,6 +8,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ import com.example.employeelist.model.Constants;
 import com.example.employeelist.model.Employee;
 import com.example.employeelist.network.ApiClient;
 import com.example.employeelist.util.Network;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +47,16 @@ public class MainActivity extends AppCompatActivity {
         adapter = new EmployeeAdapter(this);
         txtEmpty = findViewById(R.id.txtEmpty);
         progressBar = findViewById(R.id.progressBar);
+        //Clear Database
+        ImageView imgClear = findViewById(R.id.imgClear);
+        imgClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                syncList.clear();
+                employeeTable.clearTable();
+                adapter.clearItem();
+            }
+        });
         //RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));

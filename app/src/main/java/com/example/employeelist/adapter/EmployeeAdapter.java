@@ -37,6 +37,17 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ItemHo
         notifyDataSetChanged();
     }
 
+    public Employee removeItem(int position) {
+        Employee item = null;
+        try {
+            item = list.get(position);
+            list.remove(position);
+            notifyItemRemoved(position);
+        } catch (Exception e) {
+        }
+        return item;
+    }
+
     public void clearItem() {
         try {
             list.clear();

@@ -1,11 +1,16 @@
 package com.example.employeelist.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -69,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
         });
         //RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(adapter);
         recyclerView.invalidate();
@@ -114,6 +121,21 @@ public class MainActivity extends AppCompatActivity {
         txtEmpty.setVisibility(View.GONE);
         populateList();
     }
+
+    //Swipe left or right to delete item
+    ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            final int position = viewHolder.getAdapterPosition();
+            final Employee item = adapter.removeItem(position);
+            Toast.makeText(MainActivity.this,"Item Deleted", Toast.LENGTH_LONG).show();
+        }
+    };
 
     /*
      * Every time activity start, Check table and sync data.

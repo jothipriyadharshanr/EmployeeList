@@ -72,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(adapter);
         recyclerView.invalidate();
+        //SwipeRefreshLayout
+        swipeRefreshLayout = findViewById(R.id.swipeContainer);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                syncList();
+            }
+        });
         //Check RecyclerView is empty
         adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
 
@@ -130,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(List<Employee> list) {
                 progressBar.setVisibility(View.GONE);
+                swipeRefreshLayout.setRefreshing(false);
                 if (list.size() > 0) {
                     //Clear list, table and load data into RecyclerView
                     syncList.clear();

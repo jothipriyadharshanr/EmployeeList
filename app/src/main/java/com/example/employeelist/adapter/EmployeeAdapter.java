@@ -61,6 +61,20 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ItemHo
         holder.mTxtId.setText(String.valueOf(employee.getId()));
         holder.mTxtSalary.setText((String.valueOf(employee.getEmployee_salary())));
         holder.mTxtAge.setText(String.valueOf(employee.getEmployee_age()));
+        holder.mItem.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Id: " + employee.getId() +
+                        " Name: " + employee.getEmployee_name() +
+                        " Age: " + employee.getEmployee_age() +
+                        " Salary: " + employee.getEmployee_salary());
+                shareIntent.setType("text/plain");
+                context.startActivity(Intent.createChooser(shareIntent, "Share Employee Details"));
+                return false;
+            }
+        });
     }
 
     @Override

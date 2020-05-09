@@ -10,6 +10,11 @@ These employee data are stored in local SQLite DB. The sorting and clear actions
 <img src="screenshots/Load-Employee-List.png" alt="phone image" width="200px" />
 <img src="screenshots/Employee-Sort-By-Age.png" alt="phone image" width="200px" />
 </p>
+<p align="center">
+<img src="screenshots/Swipe-to-delete.png" alt="phone image" width="200px" />
+<img src="screenshots/Pull-to-refresh.png" alt="phone image" width="200px" />
+<img src="screenshots/Share-Employee-Data.png" alt="phone image" width="200px" />
+</p>
 
 # Tasks Done
 
@@ -21,10 +26,10 @@ These employee data are stored in local SQLite DB. The sorting and clear actions
 - [x] Have controls to sort lists based on the age of the user.
 - [x] Once done upload it to git and create a README, along with screenshots and include debug apk in git.
 
-# Pending Great to do
+# Great to do Items
 
 - [ ] Skeleton for list while loading data from SQLite.
-- [ ] Swipe right or left to remove item from SQLite.
-- [ ] Pull down to refresh the list the list of items from the upstream endpoint.
-- [ ] Long press on the item, to share the details using Intent.
+- [x] Swipe right or left to remove item from SQLite.
+- [x] Pull down to refresh the list the list of items from the upstream endpoint.
+- [x] Long press on the item, to share the details using Intent.
 - [ ] Distribute app through app/play store, if you hold a developer licence.

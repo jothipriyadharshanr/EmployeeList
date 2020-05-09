@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ListView</string>
+    <string name="app_name">Employee List</string>
     <string name="id">Id : </string>
     <string name="age">Age : </string>
     <string name="salary">Salary : </string>
